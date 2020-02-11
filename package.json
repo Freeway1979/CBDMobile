@@ -1,0 +1,15 @@
+{
+  "name": "CBDMobile",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "yarn react-native start",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/CBDMobile/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "build:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
+  },
+  "dependencies": {
+    "@babel/core": "*",
+    "react": "16.9.0",
+    "react-native": "^0.61.5"
+  }
+}
