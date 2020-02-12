@@ -7,10 +7,62 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Devices View Controller-->
+        <scene sceneID="Ihr-VG-nmf">
+            <objects>
+                <viewController id="mOe-pi-FWM" customClass="DevicesViewController" customModule="CBDMobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DAb-3R-ksS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="EFK-XS-PcE"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="-1" id="plB-yr-2WD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sO7-mk-dPo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="-1258"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="7K4-oV-XrD">
+            <objects>
+                <viewController id="5Ur-ew-wyM" customClass="SettingsViewController" customModule="CBDMobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sz0-gu-8ad">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7Od-dL-GJc"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" id="jW7-6X-H1X"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z2p-ho-34J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="-565"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="iYQ-Sq-3hG">
+            <objects>
+                <tabBarController id="2E6-v4-ueC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Nw5-b9-cGa"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="puC-E1-fTl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="b5I-t4-RQF"/>
+                        <segue destination="mOe-pi-FWM" kind="relationship" relationship="viewControllers" id="69K-vG-666"/>
+                        <segue destination="5Ur-ew-wyM" kind="relationship" relationship="viewControllers" id="fGX-Qh-5Jw"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebM-2z-uKu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-513" y="-798"/>
+        </scene>
         <!--Hello,React Native!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="CBDMobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="CBDMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,6 +83,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" id="mJ3-BV-S62"/>
                     <navigationItem key="navigationItem" title="Hello,React Native!" id="hPS-px-rd3"/>
                     <connections>
                         <outlet property="buttonGoRN" destination="fcS-ei-0Xo" id="S0d-hQ-00F"/>
@@ -38,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+            <point key="canvasLocation" x="967" y="-1994"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oHy-M7-X8f">
@@ -51,12 +104,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Vse-Tj-Nee"/>
+                        <segue destination="2E6-v4-ueC" kind="relationship" relationship="rootViewController" id="Vun-Kn-LUU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQ4-xh-a3h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-1625" y="-791"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="csS-J8-ViO">
