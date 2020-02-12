@@ -11,7 +11,7 @@ import React
 import Realm
 import RealmSwift
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     @IBOutlet weak var buttonGoRN: UIButton!
     
@@ -56,12 +56,14 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ViewController.rootViewController = self
+        HomeViewController.rootViewController = self
+        self.tabBarController?.navigationItem.title = "Home"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = "Home"
         
         print(NSHomeDirectory())
         
