@@ -32,7 +32,13 @@ class MixerReactModule: NSObject {
 
 extension MixerReactModule: RCTBridgeDelegate {
     func sourceURL(for bridge: RCTBridge!) -> URL! {
+        #if DEBUG
+        print("running in debug mode")
         return URL(string: "http://localhost:8081/index.bundle?platform=ios")
+        #else
+        print("running in release mode")
+        return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+        #endif
     }
 }
 

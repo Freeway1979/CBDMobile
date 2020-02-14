@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06789F1023F68A160051081F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06789F0F23F68A160051081F /* DataService.swift */; };
 		06C6F3BF23CD765200654949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6F3BE23CD765200654949 /* AppDelegate.swift */; };
 		06C6F3C123CD765200654949 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6F3C023CD765200654949 /* SceneDelegate.swift */; };
 		06C6F3C323CD765300654949 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6F3C223CD765200654949 /* HomeViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06789F0F23F68A160051081F /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		06C6F3BB23CD765200654949 /* CBDMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBDMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6F3BE23CD765200654949 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06C6F3C023CD765200654949 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06789F0E23F689FC0051081F /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				06789F0F23F68A160051081F /* DataService.swift */,
+			);
+			path = DataService;
+			sourceTree = "<group>";
+		};
 		06C6F3B223CD765200654949 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		06C6F3BD23CD765200654949 /* CBDMobile */ = {
 			isa = PBXGroup;
 			children = (
+				06789F0E23F689FC0051081F /* DataService */,
 				06D831F623D046240024AB19 /* Features */,
 				06D8319923CDD3100024AB19 /* ObjC */,
 				06D8319623CDCDBE0024AB19 /* Extension */,
@@ -333,6 +344,7 @@
 				06D831FE23D04D0E0024AB19 /* Device.swift in Sources */,
 				2965151623F2A98100A62E62 /* DevicesViewController.swift in Sources */,
 				06D831FB23D0464C0024AB19 /* Site.swift in Sources */,
+				06789F1023F68A160051081F /* DataService.swift in Sources */,
 				06D831F223CEFC010024AB19 /* ReactNativeHelper.m in Sources */,
 				2965151823F2A98C00A62E62 /* SettingsViewController.swift in Sources */,
 				06D8319823CDCDDD0024AB19 /* UIViewControllerExtensions.swift in Sources */,
