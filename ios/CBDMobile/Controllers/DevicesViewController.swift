@@ -9,9 +9,7 @@
 import UIKit
 import React
 
-class DevicesViewController: UIViewController {
-    
-    var rctRootView: RCTRootView?
+class DevicesViewController: RNViewController {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -35,6 +33,15 @@ class DevicesViewController: UIViewController {
         
         let rootView = MixerReactModule.sharedInstance.viewForModule("RNDeviceList", initialProperties: mockData)
         setRCTRootView(rootView, params: mockData)
+        
+        
+        let newMockData: [String: Any] = ["scores":
+            [
+                ["name":"Peter", "value":"22"],
+                ["name":"Lily", "value":"40"]
+            ]
+        ]
+        refresh(newMockData)
     }
 
 }

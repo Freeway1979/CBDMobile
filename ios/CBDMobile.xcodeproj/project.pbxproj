@@ -15,16 +15,15 @@
 		06C6F3CB23CD765400654949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6F3C923CD765400654949 /* LaunchScreen.storyboard */; };
 		06C6F3D423CD9E5900654949 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 06C6F3D223CD963000654949 /* main.jsbundle */; };
 		06C6F3D623CDBAC700654949 /* RNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6F3D523CDBAC700654949 /* RNViewController.swift */; };
-		06C6F3D823CDC28900654949 /* RNRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6F3D723CDC28900654949 /* RNRootView.swift */; };
 		06D8319823CDCDDD0024AB19 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8319723CDCDDD0024AB19 /* UIViewControllerExtensions.swift */; };
 		06D831A523CEB1F80024AB19 /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D831A423CEB1F80024AB19 /* UIAlertController+Window.m */; };
 		06D831F223CEFC010024AB19 /* ReactNativeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D831F123CEFC010024AB19 /* ReactNativeHelper.m */; };
-		06D831F523CEFDA80024AB19 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D831F423CEFDA80024AB19 /* SecondViewController.m */; };
 		06D831FB23D0464C0024AB19 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D831FA23D0464C0024AB19 /* Site.swift */; };
 		06D831FE23D04D0E0024AB19 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D831FD23D04D0E0024AB19 /* Device.swift */; };
 		2965151623F2A98100A62E62 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965151523F2A98100A62E62 /* DevicesViewController.swift */; };
 		2965151823F2A98C00A62E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965151723F2A98C00A62E62 /* SettingsViewController.swift */; };
 		2965151A23F63BB100A62E62 /* MixerReactModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965151923F63BB100A62E62 /* MixerReactModule.swift */; };
+		2965152023F6826100A62E62 /* DeviceListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2965151F23F6826100A62E62 /* DeviceListManager.m */; };
 		668FC2950D8B36C162BFD012 /* Pods_CBDMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,21 +38,20 @@
 		06C6F3CC23CD765400654949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06C6F3D223CD963000654949 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		06C6F3D523CDBAC700654949 /* RNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNViewController.swift; sourceTree = "<group>"; };
-		06C6F3D723CDC28900654949 /* RNRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNRootView.swift; sourceTree = "<group>"; };
 		06D8319723CDCDDD0024AB19 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		06D8319A23CDD3450024AB19 /* CBDMobile-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CBDMobile-Bridging-Header.h"; sourceTree = "<group>"; };
 		06D831A323CEB1F80024AB19 /* UIAlertController+Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Window.h"; sourceTree = "<group>"; };
 		06D831A423CEB1F80024AB19 /* UIAlertController+Window.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Window.m"; sourceTree = "<group>"; };
 		06D831F023CEFC010024AB19 /* ReactNativeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactNativeHelper.h; sourceTree = "<group>"; };
 		06D831F123CEFC010024AB19 /* ReactNativeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactNativeHelper.m; sourceTree = "<group>"; };
-		06D831F323CEFDA80024AB19 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		06D831F423CEFDA80024AB19 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		06D831FA23D0464C0024AB19 /* Site.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		06D831FD23D04D0E0024AB19 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		115C5683C5E128A2FFF2E518 /* Pods-CBDMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBDMobile.release.xcconfig"; path = "Target Support Files/Pods-CBDMobile/Pods-CBDMobile.release.xcconfig"; sourceTree = "<group>"; };
 		2965151523F2A98100A62E62 /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		2965151723F2A98C00A62E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2965151923F63BB100A62E62 /* MixerReactModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerReactModule.swift; sourceTree = "<group>"; };
+		2965151E23F6826100A62E62 /* DeviceListManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceListManager.h; sourceTree = "<group>"; };
+		2965151F23F6826100A62E62 /* DeviceListManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceListManager.m; sourceTree = "<group>"; };
 		83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBDMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E40412F97F5FD20B2F66EAC /* Pods-CBDMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBDMobile.debug.xcconfig"; path = "Target Support Files/Pods-CBDMobile/Pods-CBDMobile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,10 +101,6 @@
 				06C6F3C723CD765400654949 /* Assets.xcassets */,
 				06C6F3C923CD765400654949 /* LaunchScreen.storyboard */,
 				06C6F3CC23CD765400654949 /* Info.plist */,
-				06C6F3D523CDBAC700654949 /* RNViewController.swift */,
-				06C6F3D723CDC28900654949 /* RNRootView.swift */,
-				06D831F323CEFDA80024AB19 /* SecondViewController.h */,
-				06D831F423CEFDA80024AB19 /* SecondViewController.m */,
 			);
 			path = CBDMobile;
 			sourceTree = "<group>";
@@ -183,6 +177,7 @@
 		2965151423F2A95D00A62E62 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				06C6F3D523CDBAC700654949 /* RNViewController.swift */,
 				06C6F3C223CD765200654949 /* HomeViewController.swift */,
 				2965151523F2A98100A62E62 /* DevicesViewController.swift */,
 				2965151723F2A98C00A62E62 /* SettingsViewController.swift */,
@@ -194,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				2965151923F63BB100A62E62 /* MixerReactModule.swift */,
+				2965151E23F6826100A62E62 /* DeviceListManager.h */,
+				2965151F23F6826100A62E62 /* DeviceListManager.m */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -324,14 +321,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06D831F523CEFDA80024AB19 /* SecondViewController.m in Sources */,
 				2965151A23F63BB100A62E62 /* MixerReactModule.swift in Sources */,
 				06C6F3D623CDBAC700654949 /* RNViewController.swift in Sources */,
 				06C6F3C323CD765300654949 /* HomeViewController.swift in Sources */,
 				06C6F3BF23CD765200654949 /* AppDelegate.swift in Sources */,
-				06C6F3D823CDC28900654949 /* RNRootView.swift in Sources */,
 				06D831FE23D04D0E0024AB19 /* Device.swift in Sources */,
 				2965151623F2A98100A62E62 /* DevicesViewController.swift in Sources */,
+				2965152023F6826100A62E62 /* DeviceListManager.m in Sources */,
 				06D831FB23D0464C0024AB19 /* Site.swift in Sources */,
 				06D831F223CEFC010024AB19 /* ReactNativeHelper.m in Sources */,
 				2965151823F2A98C00A62E62 /* SettingsViewController.swift in Sources */,

@@ -11,20 +11,7 @@ import React
 import Realm
 import RealmSwift
 
-protocol RNSetRTCView {
-    func setRCTRootView(_ rtcView: RCTRootView, params: [String: Any])
-}
-
-extension UIViewController: RNSetRTCView {
-    func setRCTRootView(_ rtcView: RCTRootView, params: [String : Any]) {
-        self.view = rtcView
-        rtcView.appProperties = params
-    }
-}
-
-class HomeViewController: UIViewController {
-
-    @IBOutlet weak var buttonGoRN: UIButton!
+class HomeViewController: RNViewController {
     
     static var rootViewController: UIViewController?
     
@@ -51,6 +38,15 @@ class HomeViewController: UIViewController {
         setRCTRootView(rootView, params: mockData)
         
         testRealm()
+        
+        
+        let newMockData: [String: Any] = ["members":
+            [
+                ["name":"Peter", "age":"80"],
+                ["name":"Lily", "age":"30"]
+            ]
+        ]
+        refresh(newMockData)
     }
 
     func testRealm() {
