@@ -16,8 +16,8 @@ class DevicesViewController: RNViewController {
         self.title = "Devices"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Devices"
     }
     
@@ -33,8 +33,10 @@ class DevicesViewController: RNViewController {
         
         let rootView = MixerReactModule.sharedInstance.viewForModule("RNDeviceList", initialProperties: mockData)
         setRCTRootView(rootView, params: mockData)
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         let newMockData: [String: Any] = ["scores":
             [
                 ["name":"Peter", "value":"22"],

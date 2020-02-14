@@ -38,8 +38,10 @@ class HomeViewController: RNViewController {
         setRCTRootView(rootView, params: mockData)
         
         testRealm()
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         let newMockData: [String: Any] = ["members":
             [
                 ["name":"Peter", "age":"80"],
