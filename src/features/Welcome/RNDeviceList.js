@@ -1,7 +1,7 @@
 import React from 'react';
 import {AppRegistry, StyleSheet, Text, View} from 'react-native';
 
-class RNDeviceList extends React.Component {
+export default class RNDeviceList extends React.Component {
   render() {
     var contents = this.props['scores'].map((score) => (
       <Text key={score.name}>
@@ -36,6 +36,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-// Module name
-AppRegistry.registerComponent('RNDeviceList', () => RNDeviceList);

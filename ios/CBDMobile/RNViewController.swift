@@ -9,8 +9,6 @@
 import UIKit
 import React
 
-
-
 class RNViewController: UIViewController {
 
     var rctRootView: RCTRootView?
@@ -24,7 +22,7 @@ class RNViewController: UIViewController {
     
     func loadData(parameters: NSDictionary) {
         // load from local db or network
-        self.rctRootView?.appProperties = parameters as [NSObject : AnyObject];
+        self.rctRootView?.appProperties = parameters as! [String : Any];
     }
     
     func saveData(parameters: NSDictionary) {
@@ -48,15 +46,5 @@ class RNViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         timerChange()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
