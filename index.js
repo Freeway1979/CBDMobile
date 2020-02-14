@@ -7,8 +7,8 @@ import {
   NativeModules
 } from 'react-native';
 import RNDeviceList from './src/features/Welcome/RNDeviceList'
-const { ReactNativeHelper } = NativeModules;
 
+const { ReactNativeHelper } = NativeModules;
 
 class RNHelloWorld extends React.Component {
   constructor(props) {
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
 
 // Module name
 AppRegistry.registerComponent('RNHelloWorld', () => RNHelloWorld);
-// AppRegistry.registerComponent('RNDeviceList', () => RNDeviceList);
+AppRegistry.registerComponent('RNDeviceList', () => RNDeviceList);

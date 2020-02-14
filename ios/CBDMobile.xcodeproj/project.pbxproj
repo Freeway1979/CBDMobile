@@ -97,7 +97,7 @@
 				06C6F3D223CD963000654949 /* main.jsbundle */,
 				06C6F3BE23CD765200654949 /* AppDelegate.swift */,
 				06C6F3C023CD765200654949 /* SceneDelegate.swift */,
-				2965151923F63BB100A62E62 /* MixerReactModule.swift */,
+				2965151B23F67CF100A62E62 /* Modules */,
 				2965151423F2A95D00A62E62 /* Controllers */,
 				06C6F3C423CD765300654949 /* Main.storyboard */,
 				06C6F3C723CD765400654949 /* Assets.xcassets */,
@@ -188,6 +188,14 @@
 				2965151723F2A98C00A62E62 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2965151B23F67CF100A62E62 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2965151923F63BB100A62E62 /* MixerReactModule.swift */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		7FC77301B34553415BF6AF0A /* Pods */ = {
