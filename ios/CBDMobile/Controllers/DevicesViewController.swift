@@ -9,17 +9,15 @@
 import UIKit
 import React
 
-class DevicesViewController: UIViewController {
-    
-    var rctRootView: RCTRootView?
+class DevicesViewController: RNViewController {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.title = "Devices"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Devices"
     }
     
@@ -35,6 +33,17 @@ class DevicesViewController: UIViewController {
         
         let rootView = MixerReactModule.sharedInstance.viewForModule("RNDeviceList", initialProperties: mockData)
         setRCTRootView(rootView, params: mockData)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let newMockData: [String: Any] = ["scores":
+            [
+                ["name":"Peter", "value":"22"],
+                ["name":"Lily", "value":"40"]
+            ]
+        ]
+        refresh(newMockData)
     }
 
 }

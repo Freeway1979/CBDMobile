@@ -66,28 +66,11 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcS-ei-0Xo">
-                                <rect key="frame" x="109.5" y="431.5" width="195" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Go to react-native screen"/>
-                                <connections>
-                                    <action selector="onButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yd4-60-zQT"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="fcS-ei-0Xo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fsc-mk-Z2p"/>
-                            <constraint firstItem="fcS-ei-0Xo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oQF-i9-82Z"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="mJ3-BV-S62"/>
                     <navigationItem key="navigationItem" title="Hello,React Native!" id="hPS-px-rd3"/>
-                    <connections>
-                        <outlet property="buttonGoRN" destination="fcS-ei-0Xo" id="S0d-hQ-00F"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
