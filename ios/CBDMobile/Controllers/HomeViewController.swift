@@ -34,7 +34,7 @@ class HomeViewController: RNViewController {
                 ["name":"Joel", "age":"10"]
             ]
         ]
-        let rootView = MixerReactModule.sharedInstance.viewForModule("RNHelloWorld", initialProperties: mockData)
+        let rootView = MixerReactModule.sharedInstance.viewForModule("RNHome", initialProperties: mockData)
         setRCTRootView(rootView, params: mockData)
         
         testRealm()
