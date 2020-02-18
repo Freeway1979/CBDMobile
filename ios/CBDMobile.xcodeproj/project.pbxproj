@@ -24,8 +24,9 @@
 		2965151623F2A98100A62E62 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965151523F2A98100A62E62 /* DevicesViewController.swift */; };
 		2965151823F2A98C00A62E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965151723F2A98C00A62E62 /* SettingsViewController.swift */; };
 		2965151A23F63BB100A62E62 /* MixerReactModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965151923F63BB100A62E62 /* MixerReactModule.swift */; };
-		2965152023F6826100A62E62 /* DeviceListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2965151F23F6826100A62E62 /* DeviceListManager.m */; };
+		2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2965151F23F6826100A62E62 /* DeviceListManagerBridge.m */; };
 		668FC2950D8B36C162BFD012 /* Pods_CBDMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */; };
+		7CB0008D23FB91B30074B51F /* DeviceListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008C23FB91B30074B51F /* DeviceListManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +53,8 @@
 		2965151523F2A98100A62E62 /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		2965151723F2A98C00A62E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2965151923F63BB100A62E62 /* MixerReactModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerReactModule.swift; sourceTree = "<group>"; };
-		2965151E23F6826100A62E62 /* DeviceListManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceListManager.h; sourceTree = "<group>"; };
-		2965151F23F6826100A62E62 /* DeviceListManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceListManager.m; sourceTree = "<group>"; };
+		2965151F23F6826100A62E62 /* DeviceListManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceListManagerBridge.m; sourceTree = "<group>"; };
+		7CB0008C23FB91B30074B51F /* DeviceListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListManager.swift; sourceTree = "<group>"; };
 		83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBDMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E40412F97F5FD20B2F66EAC /* Pods-CBDMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBDMobile.debug.xcconfig"; path = "Target Support Files/Pods-CBDMobile/Pods-CBDMobile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,8 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				2965151923F63BB100A62E62 /* MixerReactModule.swift */,
-				2965151E23F6826100A62E62 /* DeviceListManager.h */,
-				2965151F23F6826100A62E62 /* DeviceListManager.m */,
+				7CB0008C23FB91B30074B51F /* DeviceListManager.swift */,
+				2965151F23F6826100A62E62 /* DeviceListManagerBridge.m */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -338,10 +339,11 @@
 				06C6F3BF23CD765200654949 /* AppDelegate.swift in Sources */,
 				06D831FE23D04D0E0024AB19 /* Device.swift in Sources */,
 				2965151623F2A98100A62E62 /* DevicesViewController.swift in Sources */,
-				2965152023F6826100A62E62 /* DeviceListManager.m in Sources */,
+				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
 				06D831FB23D0464C0024AB19 /* Site.swift in Sources */,
 				06789F1023F68A160051081F /* DataService.swift in Sources */,
 				06D831F223CEFC010024AB19 /* ReactNativeHelper.m in Sources */,
+				7CB0008D23FB91B30074B51F /* DeviceListManager.swift in Sources */,
 				2965151823F2A98C00A62E62 /* SettingsViewController.swift in Sources */,
 				06D8319823CDCDDD0024AB19 /* UIViewControllerExtensions.swift in Sources */,
 				06C6F3C123CD765200654949 /* SceneDelegate.swift in Sources */,
@@ -495,6 +497,7 @@
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 2A2G9N54ZA;
 				INFOPLIST_FILE = CBDMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,6 +521,7 @@
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 2A2G9N54ZA;
 				INFOPLIST_FILE = CBDMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,31 +1,64 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, findNodeHandle, NativeModules } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, NativeModules, NativeEventEmitter, findNodeHandle, TouchableWithoutFeedback } from 'react-native';
 
 const { DeviceListManager } = NativeModules;
 
 export default class RNDeviceList extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this._subscription = null;
+    this.state = {
+      repos: [],
+    }
+  }
+
   componentDidMount() {
-    this.textTag1 = findNodeHandle(this.refs['textTag1']);
+    this.deviceListTag = findNodeHandle(this.refs['deviceListRef']);
+    // subscribe to event emitter
+    const deviceListManagerEvent = new NativeEventEmitter(DeviceListManager);
+    this._subscription = deviceListManagerEvent;
+    this._subscription.addListener(
+      'DeviceListManagerEvent',
+      (info) => {
+        console.log(JSON.stringify(info));
+        this.setState({repos: info});
+      }
+    )
+    this._subscription.addListener(
+      'DeviceListManagerAPIFailure',
+      (info) => {
+        console.log(JSON.stringify(info));
+      }
+    )
+
+    // trigger API 
+    DeviceListManager.refreshData();
+  }
+
+  componentWillUnmount() {
+    this._subscription.remove();
   }
 
   render() {
-    var contents = this.props['scores'].map((score) => (
-      <Text key={score.name}>
-        {score.name}:{score.value}
-        {'\n'}
-      </Text>
-    ));
     return (
       <View style={styles.container}>
-        <Text style={styles.highScoresTitle}>Hello,World!This is a React Native screen.</Text>
-        <TouchableHighlight
-          ref='textTag1'
-          onPress={() => { DeviceListManager.popMessage(this.textTag1, 'Hello,I am from Device List') }}
+        {this.state.repos.length == 0 && 
+          <ActivityIndicator size="large" color="#00000" />
+        }
+        <FlatList
+          ref='deviceListRef'
+          data={this.state.repos}
+          keyExtractor = { item => item.id.toString() }
+          renderItem={({item}) => 
+          <TouchableWithoutFeedback
+          ref='textTag3'
+          onPress={() => { DeviceListManager.popMessage(this.deviceListTag, "You clicked" + item.full_name) }}
         >
-          <Text style={styles.highScoresTitle}>Say Hello to Native</Text>
-        </TouchableHighlight>
-        <Text style={styles.scores}>{contents}</Text>
+          <Text style={styles.item}>{item.full_name}</Text>
+        </TouchableWithoutFeedback>
+          }
+        />
       </View>
     );
   }
@@ -34,18 +67,20 @@ export default class RNDeviceList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 100,
+    paddingBottom: 80,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-  },
-  highScoresTitle: {
+   },
+   highScoresTitle: {
     fontSize: 20,
+    color: '#049fd9',
     textAlign: 'center',
     margin: 10,
   },
-  scores: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+   item: {
+     padding: 10,
+     fontSize: 18,
+     height: 44,
+   },
 });
