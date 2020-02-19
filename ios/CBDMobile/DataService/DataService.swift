@@ -8,6 +8,15 @@
 
 import Foundation
 
+enum DataMode {
+    case memory
+    case local
+    case remote
+    // Local then Remote
+    case byDefault
+}
+
 class DataService {
+    
     
 }
