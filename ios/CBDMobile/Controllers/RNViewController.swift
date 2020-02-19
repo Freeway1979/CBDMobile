@@ -10,7 +10,7 @@ import UIKit
 import React
 
 protocol RNRTCViewSetup {
-    func setRCTRootView(_ rtcView: RCTRootView, params: [String: Any])
+    func setRCTRootView(_ rtcView: RCTRootView)
 }
 
 class RNViewController: UIViewController {
@@ -34,9 +34,8 @@ class RNViewController: UIViewController {
 }
 
 extension RNViewController: RNRTCViewSetup {
-    func setRCTRootView(_ rtcView: RCTRootView, params: [String : Any]) {
+    func setRCTRootView(_ rtcView: RCTRootView) {
         self.view = rtcView
         self.rctRootView = rtcView
-        rtcView.appProperties = params
     }
 }
