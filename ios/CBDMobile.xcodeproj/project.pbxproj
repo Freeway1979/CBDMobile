@@ -27,6 +27,7 @@
 		2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2965151F23F6826100A62E62 /* DeviceListManagerBridge.m */; };
 		668FC2950D8B36C162BFD012 /* Pods_CBDMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */; };
 		7CB0008D23FB91B30074B51F /* DeviceListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008C23FB91B30074B51F /* DeviceListManager.swift */; };
+		7CB0008F23FD055A0074B51F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008E23FD055A0074B51F /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		2965151923F63BB100A62E62 /* MixerReactModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerReactModule.swift; sourceTree = "<group>"; };
 		2965151F23F6826100A62E62 /* DeviceListManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceListManagerBridge.m; sourceTree = "<group>"; };
 		7CB0008C23FB91B30074B51F /* DeviceListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListManager.swift; sourceTree = "<group>"; };
+		7CB0008E23FD055A0074B51F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBDMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E40412F97F5FD20B2F66EAC /* Pods-CBDMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBDMobile.debug.xcconfig"; path = "Target Support Files/Pods-CBDMobile/Pods-CBDMobile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 				06C6F3C223CD765200654949 /* HomeViewController.swift */,
 				2965151523F2A98100A62E62 /* DevicesViewController.swift */,
 				2965151723F2A98C00A62E62 /* SettingsViewController.swift */,
+				7CB0008E23FD055A0074B51F /* SecondViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB0008F23FD055A0074B51F /* SecondViewController.swift in Sources */,
 				2965151A23F63BB100A62E62 /* MixerReactModule.swift in Sources */,
 				06C6F3D623CDBAC700654949 /* RNViewController.swift in Sources */,
 				06C6F3C323CD765300654949 /* HomeViewController.swift in Sources */,
