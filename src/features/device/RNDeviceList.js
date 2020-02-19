@@ -5,55 +5,26 @@ const { DeviceListManager } = NativeModules;
 
 export default class RNDeviceList extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this._subscription = null;
-    this.state = {
-      repos: [],
-    }
-  }
+  static defaultProps={ repos: [] }
 
   componentDidMount() {
     this.deviceListTag = findNodeHandle(this.refs['deviceListRef']);
-    // subscribe to event emitter
-    const deviceListManagerEvent = new NativeEventEmitter(DeviceListManager);
-    this._subscription = deviceListManagerEvent;
-    this._subscription.addListener(
-      'DeviceListManagerEvent',
-      (info) => {
-        console.log(JSON.stringify(info));
-        this.setState({repos: info});
-      }
-    )
-    this._subscription.addListener(
-      'DeviceListManagerAPIFailure',
-      (info) => {
-        console.log(JSON.stringify(info));
-      }
-    )
-
-    // trigger API 
-    DeviceListManager.refreshData();
-  }
-
-  componentWillUnmount() {
-    this._subscription.remove();
   }
 
   render() {
     return (
       <View style={styles.container}>
-        {this.state.repos.length == 0 && 
+        {this.props.repos.length == 0 && 
           <ActivityIndicator size="large" color="#00000" />
         }
         <FlatList
           ref='deviceListRef'
-          data={this.state.repos}
+          data={this.props.repos}
           keyExtractor = { item => item.id.toString() }
           renderItem={({item}) => 
           <TouchableWithoutFeedback
           ref='textTag3'
-          onPress={() => { DeviceListManager.popMessage(this.deviceListTag, "You clicked" + item.full_name) }}
+          onPress={() => { DeviceListManager.popMessage(this.deviceListTag, "You clicked " + item.full_name, (err,r) => console.log("Success")) }}
         >
           <Text style={styles.item}>{item.full_name}</Text>
         </TouchableWithoutFeedback>

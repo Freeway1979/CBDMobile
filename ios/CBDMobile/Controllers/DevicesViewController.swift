@@ -8,6 +8,7 @@
 
 import UIKit
 import React
+import Alamofire
 
 class DevicesViewController: RNViewController {
     
@@ -24,15 +25,45 @@ class DevicesViewController: RNViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mockData: [String: Any] = ["scores":
+        let mockData = [ "repos": [
             [
-                ["name":"Alex", "value":"42"],
-                ["name":"Joel", "value":"10"]
+                "id": 170908616,
+                "node_id": "MDEwOlJlcG9zaXRvcnkxNzA5MDg2MTY=",
+                "name": ".github",
+                "full_name": "google/.github"
+            ],
+            [
+                "id": 143044068,
+                "node_id": "MDEwOlJlcG9zaXRvcnkxNDMwNDQwNjg=",
+                "name": "0x0g-2018-badge",
+                "full_name": "google/0x0g-2018-badge"
+            ],
+            [
+                "id": 91820777,
+                "node_id": "MDEwOlJlcG9zaXRvcnk5MTgyMDc3Nw==",
+                "name": "abpackage",
+                "full_name": "google/abpackage"
+            ]
             ]
         ]
         
-        let rootView = MixerReactModule.sharedInstance.viewForModule("RNDeviceList", initialProperties: mockData)
-        setRCTRootView(rootView, params: mockData)
+        let rootView = MixerReactModule.sharedInstance.viewForModule("RNDeviceList", initialProperties: ["repos": mockData])
+        setRCTRootView(rootView)
+        
+        fetchData()
     }
-
+    
+    func fetchData() {
+        self.rctRootView?.appProperties = nil
+        AF.request("https://api.github.com/users/apple/repos").responseJSON { response in
+            switch response.result {
+            case .success(let data):
+                self.rctRootView?.appProperties = ["repos": data]
+            case .failure(_):
+                self.rctRootView?.appProperties = nil
+            }
+            
+        }
+    }
+    
 }
