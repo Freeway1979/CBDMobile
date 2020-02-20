@@ -51,6 +51,8 @@ class DevicesViewController: RNViewController {
         setRCTRootView(rootView)
         
         fetchData()
+        
+        testRealm()
     }
     
     func fetchData() {
@@ -64,6 +66,25 @@ class DevicesViewController: RNViewController {
             }
             
         }
+    }
+    
+    func testRealm() {
+        let site = Site()
+        site.name = "TestSite"
+        site.country = "CN"
+        
+        // save
+        CBDStoreManager.shared().write([site])
+        // query
+        let sites = CBDStoreManager.shared().query(Site.self)
+        if let first = sites.first {
+            CBDStoreManager.shared().update {
+                first.country = "USA"
+            }
+            CBDStoreManager.shared().delete([first])
+        }
+        debugPrint(sites)
+        
     }
     
 }
