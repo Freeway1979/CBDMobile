@@ -19,7 +19,7 @@ class DeviceListManager: NSObject {
     }
     
     @objc func popMessage(_ reactTag: NSNumber, message: String, callback: RCTResponseSenderBlock) {
-        NSLog("%@", message)
+        //NSLog("%@", message)
         callback([NSNull(), ["result": "success"]]);
         DispatchQueue.main.async {
             if let view = self.bridge.uiManager.view(forReactTag: reactTag) {
