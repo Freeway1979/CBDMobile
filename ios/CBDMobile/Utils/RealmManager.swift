@@ -26,70 +26,72 @@ class RealmManager {
     }
     
     init() {
-        realmConfiguration = try? RealmManagerConfiguration().create()
+        realmConfiguration = RealmManagerConfiguration().create()
         if let config = realmConfiguration {
             self.realm = try? Realm(configuration: config)
+        } else {
+            self.realm = try? Realm()
         }
     }
 }
 
 extension RealmManager {
     /// Add or Update existed `Object` collection
-    private func addOrUpdate<T: Collection>(with realm: Realm, objects: T, completion: ((Error?) -> Void)) where T.Element == Object {
+    private func addOrUpdate<T: Collection>(with realm: Realm, objects: T, completion: ((RealmManagerError?) -> Void)) where T.Element == Object {
         do {
             try realm.write {
                 realm.add(objects, update: .error)
                 completion(nil)
             }
         } catch let error {
-            completion(error)
+            completion(.writingFailed(error))
         }
     }
     
     /// Add or Update existed `Object` item
-    private func addOrUpdate<T: Object>(with realm: Realm, object: T, completion: ((Error?) -> Void)) {
+    private func addOrUpdate<T: Object>(with realm: Realm, object: T, completion: ((RealmManagerError?) -> Void)) {
         do {
             try realm.write {
                 realm.add(object, update: .error)
                 completion(nil)
             }
         } catch let error {
-            completion(error)
+            completion(.writingFailed(error))
         }
     }
     
     /// Delte existing `Object` collection records
-    private func delete<T: Collection>(with realm: Realm, objects: T, completion: ((Error?) -> Void)) where T.Element == Object {
+    private func delete<T: Collection>(with realm: Realm, objects: T, completion: ((RealmManagerError?) -> Void)) where T.Element == Object {
         do {
             try realm.write {
                 realm.delete(objects)
                 completion(nil)
             }
         } catch let error {
-            completion(error)
+            completion(.writingFailed(error))
         }
     }
     
     /// Clean all records in database
-    private func cleanDB(with realm: Realm, completion: ((Error?) -> Void)) {
+    private func cleanDB(with realm: Realm, completion: ((RealmManagerError?) -> Void)) {
         do {
             try realm.write {
                 realm.deleteAll()
                 completion(nil)
             }
         } catch let error {
-            completion(error)
+            completion(.writingFailed(error))
         }
     }
     
     /// Write block, used when you want to update `Object` instance
-    private func write(with realm: Realm, transaction: (() -> Void)) -> Error? {
+    private func write(with realm: Realm, transaction: (() -> Void)) -> RealmManagerError? {
         do {
             try realm.write {
                 transaction()
             }
         } catch let error {
-            return error
+            return .writingFailed(error)
         }
         return nil
     }
@@ -172,7 +174,7 @@ extension RealmManager {
 extension RealmManager {
     enum RealmManagerError: LocalizedError {
         case realmOpeningFailed
-        case writingFailed
+        case writingFailed(Error)
         
         var errorDescription: String? {
             switch self {

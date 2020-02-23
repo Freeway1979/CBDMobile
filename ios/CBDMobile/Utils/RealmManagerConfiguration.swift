@@ -12,15 +12,23 @@ import Realm
 
 class RealmManagerConfiguration {
     
+    let dbName = "cbd.realm"
     let schemaVersion: UInt64 = 1
-    let dbName = "CBDStore.realm"
     
-    func create() throws -> Realm.Configuration {
-        guard let documentDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
-                                                                   appropriateFor: nil, create: false) else {
-                throw Error.openingFailed
+    func create() -> Realm.Configuration? {
+        guard let documentDirectory =
+            try? FileManager.default.url(for: .documentDirectory,
+                                         in: .userDomainMask,
+                                         appropriateFor: nil,
+                                         create: false) else {
+                return nil
         }
         let url = documentDirectory.appendingPathComponent(dbName)
+        
+        var schemaVersion: UInt64 = 1
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let dbVersion = Double(appVersion) {
+            schemaVersion = UInt64(dbVersion * 10)
+        }
         
         let encryptionKey = getKeyFromKeychain()
         let realmConfiguration = Realm.Configuration(fileURL: url, encryptionKey: encryptionKey, readOnly: false, schemaVersion: schemaVersion, migrationBlock: { (migration, oldSchemaVersion) in
@@ -77,26 +85,6 @@ class RealmManagerConfiguration {
             print("Database need mirgration.")
         } else {
             print("Database not need mirgration.")
-        }
-    }
-}
-
-extension RealmManagerConfiguration {
-    
-    enum Error: LocalizedError {
-        case openingFailed
-        case openingFileURLFailed
-        case removingFileProtectionFailed
-        
-        var errorDescription: String? {
-            switch self {
-            case .openingFailed:
-                return "Failed to open or create the selected Realm."
-            case .openingFileURLFailed:
-                return "Failed to open the URL path for the Realm folder."
-            case .removingFileProtectionFailed:
-                return "Failed to remove file protection at the specified path."
-            }
         }
     }
 }
