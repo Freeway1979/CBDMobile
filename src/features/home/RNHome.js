@@ -4,7 +4,8 @@ import {
   TouchableHighlight,
   Button,
   findNodeHandle,
-  NativeModules
+    Platform,
+    NativeModules
 } from 'react-native';
 
 const { ReactNativeHelper } = NativeModules;
@@ -12,9 +13,7 @@ const { ReactNativeHelper } = NativeModules;
 export default class RNHome extends React.Component {
   constructor(props) {
     super(props);
-
-    // alert(JSON.stringify(props));
-
+  // alert(JSON.stringify(props['members']));
     this.rootTag = props['rootTag'];
 
   }
@@ -24,13 +23,20 @@ export default class RNHome extends React.Component {
     this.textTag2 = findNodeHandle(this.refs['textTag2']);
     this.textTag3 = findNodeHandle(this.refs['textTag3']);
   }
-  render() {
-    var contents = this.props['members'].map((score) => (
-      <Text key={score.name}>
-        Name:{score.name} Age:{score.age}
-        {'\n'}
-      </Text>
-    ));
+
+    render() {
+        let scores;
+        if (Platform.OS == 'IOS') {
+            scores = this.props['members'];
+        } else {
+            scores = JSON.parse(this.props['members']);
+        }
+        var contents = scores.map((score) => (
+            <Text key={score.name}>
+                Name:{score.name} Age:{score.age}
+                {'\n'}
+            </Text>
+        ));
     return (
       <View style={styles.container}>
         <Text style={styles.highScoresTitle, {color: '#333333'}}>Welcome to React Native.</Text>

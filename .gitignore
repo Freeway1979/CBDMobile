@@ -35,6 +35,44 @@ DerivedData/
 ## Obj-C/Swift specific
 *.hmap
 
+# Gradle
+/build/
+/RNTester/android/app/build/
+/RNTester/android/app/gradle/
+/RNTester/android/app/gradlew
+/RNTester/android/app/gradlew.bat
+/ReactAndroid/build/
+/ReactAndroid/gradle/
+/ReactAndroid/gradlew
+/ReactAndroid/gradlew.bat
+
+# Android Studio
+.project
+.settings
+.classpath
+
+
+# Android
+.idea
+.gradle
+local.properties
+*.iml
+
+# Android/IJ
+.idea
+.gradle
+local.properties
+
+# node.js
+node_modules/
+npm-debug.log
+
+# BUCK
+buck-out/
+\.buckd/
+android/app/libs
+android/keystores/debug.keystore
+
 ## App packaging
 *.ipa
 *.dSYM.zip
@@ -98,3 +136,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# Visual studio
+.vscode
+.vs
