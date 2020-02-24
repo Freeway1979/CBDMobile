@@ -39,6 +39,7 @@
 		CD98819123FE2A4400B7BB74 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98819023FE2A4400B7BB74 /* APIConstant.swift */; };
 		CD98819523FE7B1C00B7BB74 /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98819423FE7B1C00B7BB74 /* TestEndpoint.swift */; };
 		CDD7C08224036B9700075544 /* Encodable+AlamofireParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7C08124036B9700075544 /* Encodable+AlamofireParameters.swift */; };
+		CDD7C0842403A1E900075544 /* TestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7C0832403A1E900075544 /* TestInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		CD98819023FE2A4400B7BB74 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		CD98819423FE7B1C00B7BB74 /* TestEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEndpoint.swift; sourceTree = "<group>"; };
 		CDD7C08124036B9700075544 /* Encodable+AlamofireParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+AlamofireParameters.swift"; sourceTree = "<group>"; };
+		CDD7C0832403A1E900075544 /* TestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				CD7B661323FF6A5700AFC425 /* SiteInteractor.swift */,
+				CDD7C0832403A1E900075544 /* TestInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				06C6F3C123CD765200654949 /* SceneDelegate.swift in Sources */,
 				06D831A523CEB1F80024AB19 /* UIAlertController+Window.m in Sources */,
 				CD7B660323FE984B00AFC425 /* APIManager.swift in Sources */,
+				CDD7C0842403A1E900075544 /* TestInteractor.swift in Sources */,
 				067364AA23FB70990030A8B7 /* WebAPI.swift in Sources */,
 				CD98818B23FE291400B7BB74 /* APIConvertible.swift in Sources */,
 			);

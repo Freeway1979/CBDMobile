@@ -13,17 +13,17 @@ struct APIConstant {
     static let timeoutSeconds = 10
     
     struct ProductionServer {
-        // TODO
+        // TODO: change to production base url
         static let URL = "https://api.testproduction.com"
     }
     
     struct StagingServer {
-        // TODO
+        // TODO: change to staging base url
         static let URL = "https://api.teststaging.com"
     }
     
     struct DevServer {
-        // TODO
+        // TODO: change to dev base url
         static let URL = "https://api.testdev.com"
     }
     

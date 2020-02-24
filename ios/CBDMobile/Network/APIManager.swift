@@ -34,7 +34,7 @@ final class APIManager {
         self.session = session
     }
     
-    func call<T: Decodable>(endpoint: APIConvertible, completion: @escaping (T?, _ statusCode: Int?, _ error: Error?) -> ()) {
+    func callDecodable<T: Decodable>(endpoint: APIConvertible, completion: @escaping (T?, _ statusCode: Int?, Error?) -> ()) {
         self.session.request(endpoint)
             .validate()
             .responseDecodable(of: T.self) { (response) in
@@ -46,10 +46,23 @@ final class APIManager {
                     completion(nil, statusCode, self.parseApiError(with: statusCode, error: error))
                 }
         }
-        
     }
     
-    func call(endpoint: APIConvertible, completion: @escaping (()?, _ statusCode: Int?, _ error: Error?) -> ()) {
+    func callJSON(endpoint: APIConvertible, completion: @escaping (Any?, _ statusCode: Int?, Error?) -> ()) {
+        self.session.request(endpoint)
+            .validate()
+            .responseJSON { (response) in
+                let statusCode = response.response?.statusCode
+                switch response.result {
+                case .success(let value):
+                    completion(value, statusCode, nil)
+                case .failure(let error):
+                    completion(nil, statusCode, self.parseApiError(with: statusCode, error: error))
+                }
+        }
+    }
+    
+    func callAction(endpoint: APIConvertible, completion: @escaping (()?, _ statusCode: Int?, Error?) -> ()) {
         self.session.request(endpoint)
             .validate()
             .response { (response) in
@@ -62,20 +75,6 @@ final class APIManager {
                 }
         }
     }
-    
-//    func call(endpoint: APIConvertible, completion: @escaping (Any?, _ statusCode: Int?, _ error: Error?) -> ()) {
-//        self.session.request(endpoint)
-//            .validate()
-//            .responseJSON { (response) in
-//                let statusCode = response.response?.statusCode
-//                switch response.result {
-//                case .success(let value):
-//                    completion(value, statusCode, nil)
-//                case .failure(let error):
-//                    completion(nil, statusCode, self.parseApiError(with: statusCode, error: error))
-//                }
-//        }
-//    }
     
     private func parseApiError(with statusCode: Int?, error: AFError) -> Error {
         switch statusCode {

@@ -55,14 +55,9 @@ class DevicesViewController: RNViewController {
     
     func fetchData() {
         self.rctRootView?.appProperties = nil
-        AF.request("https://api.github.com/users/apple/repos").responseJSON { response in
-            switch response.result {
-            case .success(let data):
-                self.rctRootView?.appProperties = ["repos": data]
-            case .failure(_):
-                self.rctRootView?.appProperties = nil
-            }
-            
+        TestInteractor().getUserRepos(with: "apple") { (repos) in
+            guard let repos = repos else { return }
+            self.rctRootView?.appProperties = ["repos": repos]
         }
     }
     

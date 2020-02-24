@@ -11,7 +11,7 @@ import Foundation
 final class SiteInteractor {
     
     func getSites(completion: @escaping ([Site]?) -> ()) {
-        APIManager.shared().call(endpoint: SiteEndpoint.readSites) { (sites: [Site]?, statusCode, error) in
+        APIManager.shared().callDecodable(endpoint: SiteEndpoint.readSites) { (sites: [Site]?, statusCode, error) in
             guard let sites = sites else {
                 completion(nil)
                 return
@@ -21,7 +21,7 @@ final class SiteInteractor {
     }
     
     func getSite(with name: String, completion: @escaping (Site?) -> ()) {
-        APIManager.shared().call(endpoint: SiteEndpoint.readSite(name: name)) { (site: Site?, statusCode, error) in
+        APIManager.shared().callDecodable(endpoint: SiteEndpoint.readSite(name: name)) { (site: Site?, statusCode, error) in
             guard let site = site else {
                 completion(nil)
                 return
@@ -32,7 +32,7 @@ final class SiteInteractor {
     
     func createSite(with site: Site, completion: @escaping (Site?) -> ()) {
         guard let parameters = site.alamofireParameters else { return }
-        APIManager.shared().call(endpoint: SiteEndpoint.createSite(parameters: parameters)) { (site: Site?, statusCode, error) in
+        APIManager.shared().callDecodable(endpoint: SiteEndpoint.createSite(parameters: parameters)) { (site: Site?, statusCode, error) in
             guard let site = site else {
                 completion(nil)
                 return
@@ -43,7 +43,7 @@ final class SiteInteractor {
     
     func updateSite(with name: String, site: Site, completion: @escaping (Site?) -> ()) {
         guard let parameters = site.alamofireParameters else { return }
-        APIManager.shared().call(endpoint: SiteEndpoint.updateSite(name: name, parameters: parameters)) { (site: Site?, statusCode, error) in
+        APIManager.shared().callDecodable(endpoint: SiteEndpoint.updateSite(name: name, parameters: parameters)) { (site: Site?, statusCode, error) in
             guard let site = site else {
                 completion(nil)
                 return
@@ -53,13 +53,14 @@ final class SiteInteractor {
     }
     
     func deleteSite(with name: String, completion: @escaping (()?) -> ()) {
-        APIManager.shared().call(endpoint: SiteEndpoint.deleteSite(name:  name)) { (success, statusCode, error) in
-            guard let success = success else {
+        APIManager.shared().callAction(endpoint: SiteEndpoint.deleteSite(name:  name)) { (success, statusCode, error) in
+            guard success != nil else {
                 completion(nil)
                 return
             }
             completion(success)
         }
     }
+    
 }
 
