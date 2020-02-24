@@ -32,6 +32,16 @@
 		7C4F7B3523FE120700F68B62 /* RealmManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F7B3423FE120700F68B62 /* RealmManagerConfiguration.swift */; };
 		7CB0008D23FB91B30074B51F /* DeviceListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008C23FB91B30074B51F /* DeviceListManager.swift */; };
 		7CB0008F23FD055A0074B51F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008E23FD055A0074B51F /* SecondViewController.swift */; };
+		CD7B660323FE984B00AFC425 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7B660223FE984B00AFC425 /* APIManager.swift */; };
+		CD7B660523FEBA7600AFC425 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7B660423FEBA7600AFC425 /* ApiError.swift */; };
+		CD7B661423FF6A5700AFC425 /* SiteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7B661323FF6A5700AFC425 /* SiteInteractor.swift */; };
+		CD98818B23FE291400B7BB74 /* APIConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98818A23FE291400B7BB74 /* APIConvertible.swift */; };
+		CD98818D23FE29B400B7BB74 /* SiteEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98818C23FE29B400B7BB74 /* SiteEndpoint.swift */; };
+		CD98818F23FE29E200B7BB74 /* DeviceEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98818E23FE29E200B7BB74 /* DeviceEndpoint.swift */; };
+		CD98819123FE2A4400B7BB74 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98819023FE2A4400B7BB74 /* APIConstant.swift */; };
+		CD98819523FE7B1C00B7BB74 /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98819423FE7B1C00B7BB74 /* TestEndpoint.swift */; };
+		CDD7C08224036B9700075544 /* Encodable+AlamofireParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7C08124036B9700075544 /* Encodable+AlamofireParameters.swift */; };
+		CDD7C0842403A1E900075544 /* TestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7C0832403A1E900075544 /* TestInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +77,16 @@
 		7CB0008E23FD055A0074B51F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBDMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E40412F97F5FD20B2F66EAC /* Pods-CBDMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBDMobile.debug.xcconfig"; path = "Target Support Files/Pods-CBDMobile/Pods-CBDMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		CD7B660223FE984B00AFC425 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		CD7B660423FEBA7600AFC425 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		CD7B661323FF6A5700AFC425 /* SiteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteInteractor.swift; sourceTree = "<group>"; };
+		CD98818A23FE291400B7BB74 /* APIConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConvertible.swift; sourceTree = "<group>"; };
+		CD98818C23FE29B400B7BB74 /* SiteEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteEndpoint.swift; sourceTree = "<group>"; };
+		CD98818E23FE29E200B7BB74 /* DeviceEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEndpoint.swift; sourceTree = "<group>"; };
+		CD98819023FE2A4400B7BB74 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
+		CD98819423FE7B1C00B7BB74 /* TestEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEndpoint.swift; sourceTree = "<group>"; };
+		CDD7C08124036B9700075544 /* Encodable+AlamofireParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+AlamofireParameters.swift"; sourceTree = "<group>"; };
+		CDD7C0832403A1E900075544 /* TestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +138,7 @@
 		06C6F3BD23CD765200654949 /* CBDMobile */ = {
 			isa = PBXGroup;
 			children = (
+				CD98818723FE179900B7BB74 /* Network */,
 				06789F0E23F689FC0051081F /* DataService */,
 				06D831F623D046240024AB19 /* Features */,
 				06D8319923CDD3100024AB19 /* ObjC */,
@@ -142,6 +163,7 @@
 				06D8319723CDCDDD0024AB19 /* UIViewControllerExtensions.swift */,
 				06D831A323CEB1F80024AB19 /* UIAlertController+Window.h */,
 				06D831A423CEB1F80024AB19 /* UIAlertController+Window.m */,
+				CDD7C08124036B9700075544 /* Encodable+AlamofireParameters.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -245,6 +267,38 @@
 				115C5683C5E128A2FFF2E518 /* Pods-CBDMobile.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CD7B661123FF624200AFC425 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				CD98818C23FE29B400B7BB74 /* SiteEndpoint.swift */,
+				CD98818E23FE29E200B7BB74 /* DeviceEndpoint.swift */,
+				CD98819423FE7B1C00B7BB74 /* TestEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		CD7B661223FF6A1A00AFC425 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CD7B661323FF6A5700AFC425 /* SiteInteractor.swift */,
+				CDD7C0832403A1E900075544 /* TestInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CD98818723FE179900B7BB74 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CD7B661223FF6A1A00AFC425 /* Interactor */,
+				CD7B661123FF624200AFC425 /* Endpoints */,
+				CD98818A23FE291400B7BB74 /* APIConvertible.swift */,
+				CD98819023FE2A4400B7BB74 /* APIConstant.swift */,
+				CD7B660223FE984B00AFC425 /* APIManager.swift */,
+				CD7B660423FEBA7600AFC425 /* ApiError.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,21 +424,32 @@
 				7C4F7B3523FE120700F68B62 /* RealmManagerConfiguration.swift in Sources */,
 				06C6F3C323CD765300654949 /* HomeViewController.swift in Sources */,
 				06C6F3BF23CD765200654949 /* AppDelegate.swift in Sources */,
+				CD7B661423FF6A5700AFC425 /* SiteInteractor.swift in Sources */,
 				06D831FE23D04D0E0024AB19 /* Device.swift in Sources */,
 				2965151623F2A98100A62E62 /* DevicesViewController.swift in Sources */,
+				CD98819123FE2A4400B7BB74 /* APIConstant.swift in Sources */,
 				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
+				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
+				CD98818F23FE29E200B7BB74 /* DeviceEndpoint.swift in Sources */,
+				CD7B660523FEBA7600AFC425 /* ApiError.swift in Sources */,
 				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
 				067364A823FB5F330030A8B7 /* SiteDataService.swift in Sources */,
+				CDD7C08224036B9700075544 /* Encodable+AlamofireParameters.swift in Sources */,
 				06D831FB23D0464C0024AB19 /* Site.swift in Sources */,
 				06789F1023F68A160051081F /* DataService.swift in Sources */,
+				CD98819523FE7B1C00B7BB74 /* TestEndpoint.swift in Sources */,
 				06D831F223CEFC010024AB19 /* ReactNativeHelper.m in Sources */,
 				7CB0008D23FB91B30074B51F /* DeviceListManager.swift in Sources */,
 				2965151823F2A98C00A62E62 /* SettingsViewController.swift in Sources */,
 				06D8319823CDCDDD0024AB19 /* UIViewControllerExtensions.swift in Sources */,
+				CD98818D23FE29B400B7BB74 /* SiteEndpoint.swift in Sources */,
 				7C4F7B3123FD197500F68B62 /* RealmManager.swift in Sources */,
 				06C6F3C123CD765200654949 /* SceneDelegate.swift in Sources */,
 				06D831A523CEB1F80024AB19 /* UIAlertController+Window.m in Sources */,
+				CD7B660323FE984B00AFC425 /* APIManager.swift in Sources */,
+				CDD7C0842403A1E900075544 /* TestInteractor.swift in Sources */,
 				067364AA23FB70990030A8B7 /* WebAPI.swift in Sources */,
+				CD98818B23FE291400B7BB74 /* APIConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

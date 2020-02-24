@@ -9,8 +9,15 @@
 import Foundation
 import RealmSwift
 
-class Site: Object {
+class Site: Object, Codable {
     @objc dynamic var name = ""
     @objc dynamic var country = "US"
     let devices = List<Device>()
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case country
+        case devices
+    }
+    
 }

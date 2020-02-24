@@ -9,7 +9,12 @@
 import Foundation
 import RealmSwift
 
-class Device: Object {
+class Device: Object, Codable {
     @objc dynamic var name = ""
     @objc dynamic var id = ""
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case id
+    }
 }
