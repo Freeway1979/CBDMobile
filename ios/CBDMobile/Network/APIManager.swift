@@ -15,7 +15,7 @@ enum APIEnvironment {
     case production
 }
 
-class APIManager {
+final class APIManager {
     
     static let apiEnvironment: APIEnvironment = .dev
     
