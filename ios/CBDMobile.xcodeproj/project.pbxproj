@@ -28,6 +28,8 @@
 		2965151A23F63BB100A62E62 /* MixerReactModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965151923F63BB100A62E62 /* MixerReactModule.swift */; };
 		2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2965151F23F6826100A62E62 /* DeviceListManagerBridge.m */; };
 		668FC2950D8B36C162BFD012 /* Pods_CBDMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */; };
+		7C4F7B3123FD197500F68B62 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F7B3023FD197500F68B62 /* RealmManager.swift */; };
+		7C4F7B3523FE120700F68B62 /* RealmManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F7B3423FE120700F68B62 /* RealmManagerConfiguration.swift */; };
 		7CB0008D23FB91B30074B51F /* DeviceListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008C23FB91B30074B51F /* DeviceListManager.swift */; };
 		7CB0008F23FD055A0074B51F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008E23FD055A0074B51F /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,8 @@
 		2965151723F2A98C00A62E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2965151923F63BB100A62E62 /* MixerReactModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerReactModule.swift; sourceTree = "<group>"; };
 		2965151F23F6826100A62E62 /* DeviceListManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceListManagerBridge.m; sourceTree = "<group>"; };
+		7C4F7B3023FD197500F68B62 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		7C4F7B3423FE120700F68B62 /* RealmManagerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManagerConfiguration.swift; sourceTree = "<group>"; };
 		7CB0008C23FB91B30074B51F /* DeviceListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListManager.swift; sourceTree = "<group>"; };
 		7CB0008E23FD055A0074B51F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBDMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +125,7 @@
 				06C6F3D223CD963000654949 /* main.jsbundle */,
 				06C6F3BE23CD765200654949 /* AppDelegate.swift */,
 				06C6F3C023CD765200654949 /* SceneDelegate.swift */,
+				7C4F7B2F23FD195700F68B62 /* Utils */,
 				2965151B23F67CF100A62E62 /* Modules */,
 				2965151423F2A95D00A62E62 /* Controllers */,
 				06C6F3C423CD765300654949 /* Main.storyboard */,
@@ -222,6 +227,15 @@
 				2965151F23F6826100A62E62 /* DeviceListManagerBridge.m */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		7C4F7B2F23FD195700F68B62 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7C4F7B3023FD197500F68B62 /* RealmManager.swift */,
+				7C4F7B3423FE120700F68B62 /* RealmManagerConfiguration.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		7FC77301B34553415BF6AF0A /* Pods */ = {
@@ -353,12 +367,13 @@
 				7CB0008F23FD055A0074B51F /* SecondViewController.swift in Sources */,
 				2965151A23F63BB100A62E62 /* MixerReactModule.swift in Sources */,
 				06C6F3D623CDBAC700654949 /* RNViewController.swift in Sources */,
+				7C4F7B3523FE120700F68B62 /* RealmManagerConfiguration.swift in Sources */,
 				06C6F3C323CD765300654949 /* HomeViewController.swift in Sources */,
 				06C6F3BF23CD765200654949 /* AppDelegate.swift in Sources */,
 				06D831FE23D04D0E0024AB19 /* Device.swift in Sources */,
 				2965151623F2A98100A62E62 /* DevicesViewController.swift in Sources */,
 				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
-				2965152023F6826100A62E62 /* DeviceListManager.m in Sources */,
+				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
 				067364A823FB5F330030A8B7 /* SiteDataService.swift in Sources */,
 				06D831FB23D0464C0024AB19 /* Site.swift in Sources */,
 				06789F1023F68A160051081F /* DataService.swift in Sources */,
@@ -366,6 +381,7 @@
 				7CB0008D23FB91B30074B51F /* DeviceListManager.swift in Sources */,
 				2965151823F2A98C00A62E62 /* SettingsViewController.swift in Sources */,
 				06D8319823CDCDDD0024AB19 /* UIViewControllerExtensions.swift in Sources */,
+				7C4F7B3123FD197500F68B62 /* RealmManager.swift in Sources */,
 				06C6F3C123CD765200654949 /* SceneDelegate.swift in Sources */,
 				06D831A523CEB1F80024AB19 /* UIAlertController+Window.m in Sources */,
 				067364AA23FB70990030A8B7 /* WebAPI.swift in Sources */,
@@ -515,6 +531,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 2A2G9N54ZA;
 				INFOPLIST_FILE = CBDMobile/Info.plist;
@@ -539,6 +556,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 2A2G9N54ZA;
 				INFOPLIST_FILE = CBDMobile/Info.plist;

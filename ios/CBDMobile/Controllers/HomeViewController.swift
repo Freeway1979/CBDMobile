@@ -37,7 +37,7 @@ class HomeViewController: RNViewController {
         let rootView = MixerReactModule.sharedInstance.viewForModule("RNHome", initialProperties: mockData)
         setRCTRootView(rootView)
         
-        testRealm()
+        //testRealm()
     }
     
     override func viewDidAppear(_ animated: Bool) {
