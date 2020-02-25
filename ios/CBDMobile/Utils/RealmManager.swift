@@ -72,6 +72,19 @@ extension RealmManager {
         }
     }
     
+    /// DROP table in realm
+    private func dropTable<T: Object>(with realm: Realm, type: T.Type, completion: ((RealmManagerError?) -> Void)) {
+        do {
+            try realm.write {
+                let allObjects = realm.objects(type.self)
+                realm.delete(allObjects)
+                completion(nil)
+            }
+        } catch let error {
+            completion(.writingFailed(error))
+        }
+    }
+    
     /// Clean all records in database
     private func cleanDB(with realm: Realm, completion: ((RealmManagerError?) -> Void)) {
         do {
@@ -100,14 +113,14 @@ extension RealmManager {
 extension RealmManager {
     
     /// Query `Object` record in database, filter condition paramter optionally
-    func retrive<T: Object>(_ condition: String? = nil, completion: ((Result<[T], Error>) -> Void)) {
+    func retrive<T: Object>(_ type: T.Type, condition: String? = nil, completion: ((Result<[T], Error>) -> Void)) {
         guard let realm = realm else {
             completion(.failure(RealmManagerError.realmOpeningFailed))
             return
         }
         
         // All object inside the model passed.
-        var objectList = realm.objects(T.self)
+        var objectList = realm.objects(type.self)
         
         if let condition = condition {
             // filters the result if condition exists
@@ -127,15 +140,15 @@ extension RealmManager {
             completion(RealmManagerError.realmOpeningFailed)
             return
         }
-        self.addOrUpdate(with: realm, objects: objects, completion: completion)
+        addOrUpdate(with: realm, objects: objects, completion: completion)
     }
     
     func delete<T: Collection>(objects: T, completion: ((Error?) -> Void)) where T.Element == Object {
-        guard let realm = self.realm else {
+        guard let realm = realm else {
             completion(RealmManagerError.realmOpeningFailed)
             return
         }
-        self.delete(with: realm, objects: objects, completion: completion)
+        delete(with: realm, objects: objects, completion: completion)
     }
 }
 
@@ -146,20 +159,28 @@ extension RealmManager {
             completion(RealmManagerError.realmOpeningFailed)
             return
         }
-        self.addOrUpdate(with: realm, object: object, completion: completion)
+        addOrUpdate(with: realm, object: object, completion: completion)
     }
     
     func delete<T: Object>(object: T, completion: ((Error?) -> Void)) {
-        guard let realm = self.realm else {
+        guard let realm = realm else {
             completion(RealmManagerError.realmOpeningFailed)
             return
         }
-        self.delete(with: realm, objects: [object], completion: completion)
+        delete(with: realm, objects: [object], completion: completion)
     }
 }
 
 // MARK: Remove
 extension RealmManager {
+    
+    func dropTable<T: Object>(type: T.Type, completion: ((Error?) -> Void)) {
+        guard let realm = realm else {
+            completion(RealmManagerError.realmOpeningFailed)
+            return
+        }
+        dropTable(with: realm, type: type, completion: completion)
+    }
     
     /// Clean all records database
     public func cleanDB(completion: ((Error?) -> Void)) {
@@ -167,7 +188,7 @@ extension RealmManager {
             completion(RealmManagerError.realmOpeningFailed)
             return
         }
-        self.cleanDB(with: realm, completion: completion)
+        cleanDB(with: realm, completion: completion)
     }
 }
 

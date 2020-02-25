@@ -42,7 +42,7 @@ class SiteDataService {
     
     /// Retrive site only from database
     func retriveSitesFromDB(_ condition: String? = nil, completion: @escaping ((Result<[Site], Error>) -> Void))  {
-        RealmManager.shared().retrive(condition) { result in
+        RealmManager.shared().retrive(Site.self, condition: condition) { result in
             completion(result)
         }
     }
@@ -78,4 +78,19 @@ extension SiteDataService {
         // TODO API call
     }
     
+}
+
+// MARK: Remove
+extension SiteDataService {
+    func deleteSite(_ sites: [Site], completion: ((Error?) -> Void)?) {
+        RealmManager.shared().delete(objects: sites) { error in
+            completion?(error)
+        }
+    }
+    
+    func deleteAllSites(completion: ((Error?) -> Void)?) {
+        RealmManager.shared().dropTable(type: Site.self) { error in
+            completion?(error)
+        }
+    }
 }
