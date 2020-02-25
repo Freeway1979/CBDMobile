@@ -181,6 +181,7 @@
 		06D831F623D046240024AB19 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CD3FAFA42404FDEC004273A7 /* Test */,
 				06D831F823D046310024AB19 /* Site */,
 				06D831F723D0462A0024AB19 /* Device */,
 				067364A923FB70990030A8B7 /* WebAPI.swift */,
@@ -191,6 +192,7 @@
 		06D831F723D0462A0024AB19 /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				CD3FAFA22404F34F004273A7 /* Endpoints */,
 				06D831FC23D04D040024AB19 /* Model */,
 			);
 			path = Device;
@@ -199,6 +201,8 @@
 		06D831F823D046310024AB19 /* Site */ = {
 			isa = PBXGroup;
 			children = (
+				CD3FAFA32404F366004273A7 /* Interactor */,
+				CD3FAFA12404F334004273A7 /* Endpoints */,
 				067364A623FB5F150030A8B7 /* DataService */,
 				06D831F923D046370024AB19 /* Model */,
 			);
@@ -269,11 +273,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CD7B661123FF624200AFC425 /* Endpoints */ = {
+		CD3FAFA12404F334004273A7 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
 				CD98818C23FE29B400B7BB74 /* SiteEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		CD3FAFA22404F34F004273A7 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
 				CD98818E23FE29E200B7BB74 /* DeviceEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		CD3FAFA32404F366004273A7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CD7B661323FF6A5700AFC425 /* SiteInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CD3FAFA42404FDEC004273A7 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				CD7B661223FF6A1A00AFC425 /* Interactor */,
+				CD7B661123FF624200AFC425 /* Endpoints */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		CD7B661123FF624200AFC425 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
 				CD98819423FE7B1C00B7BB74 /* TestEndpoint.swift */,
 			);
 			path = Endpoints;
@@ -282,7 +317,6 @@
 		CD7B661223FF6A1A00AFC425 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				CD7B661323FF6A5700AFC425 /* SiteInteractor.swift */,
 				CDD7C0832403A1E900075544 /* TestInteractor.swift */,
 			);
 			path = Interactor;
@@ -291,8 +325,6 @@
 		CD98818723FE179900B7BB74 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				CD7B661223FF6A1A00AFC425 /* Interactor */,
-				CD7B661123FF624200AFC425 /* Endpoints */,
 				CD98818A23FE291400B7BB74 /* APIConvertible.swift */,
 				CD98819023FE2A4400B7BB74 /* APIConstant.swift */,
 				CD7B660223FE984B00AFC425 /* APIManager.swift */,
