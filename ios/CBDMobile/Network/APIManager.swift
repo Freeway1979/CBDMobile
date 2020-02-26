@@ -22,7 +22,7 @@ final class APIManager {
     private let session: Session
     
     private static var shardApiManager: APIManager = {
-        let apiManager = APIManager(session: Session())
+        let apiManager = APIManager(session: Session(eventMonitors: [APILogger()]))
         return apiManager
     }()
     
@@ -34,61 +34,85 @@ final class APIManager {
         self.session = session
     }
     
-    func callDecodable<T: Decodable>(endpoint: APIConvertible, completion: @escaping (T?, _ statusCode: Int?, Error?) -> ()) {
-        self.session.request(endpoint)
+}
+
+extension APIManager {
+    
+    @discardableResult
+    func callDecodable<T: Decodable>(endpoint: APIConvertible, completion: @escaping (Result<T, Error>) -> ()) -> DataRequest {
+        let request = self.session.request(endpoint)
+        request
             .validate()
             .responseDecodable(of: T.self) { (response) in
-                let statusCode = response.response?.statusCode
                 switch response.result {
-                case .success(let value):
-                    completion(value, statusCode, nil)
+                case .success(let model):
+                    completion(.success(model))
                 case .failure(let error):
-                    completion(nil, statusCode, self.parseApiError(with: statusCode, error: error))
+                    let statusCode = response.response?.statusCode
+                    completion(.failure(self.parseApiError(with: statusCode, error: error)))
                 }
         }
+        return request
     }
     
-    func callJSON(endpoint: APIConvertible, completion: @escaping (Any?, _ statusCode: Int?, Error?) -> ()) {
-        self.session.request(endpoint)
+    @discardableResult
+    func callJSON(endpoint: APIConvertible, completion: @escaping (Result<Any, Error>) -> ()) -> DataRequest {
+        let request = self.session.request(endpoint)
+        request
             .validate()
             .responseJSON { (response) in
-                let statusCode = response.response?.statusCode
                 switch response.result {
-                case .success(let value):
-                    completion(value, statusCode, nil)
+                case .success(let json):
+                    completion(.success(json))
                 case .failure(let error):
-                    completion(nil, statusCode, self.parseApiError(with: statusCode, error: error))
+                    let statusCode = response.response?.statusCode
+                    completion(.failure(self.parseApiError(with: statusCode, error: error)))
                 }
         }
+        return request
     }
     
-    func callAction(endpoint: APIConvertible, completion: @escaping (()?, _ statusCode: Int?, Error?) -> ()) {
-        self.session.request(endpoint)
+    @discardableResult
+    func call(endpoint: APIConvertible, completion: @escaping (Error?) -> ()) -> DataRequest {
+        let request = self.session.request(endpoint)
+        request
             .validate()
             .response { (response) in
-                let statusCode = response.response?.statusCode
                 switch response.result {
                 case .success(_):
-                    completion((), statusCode, nil)
+                    completion(nil)
                 case .failure(let error):
-                    completion(nil, statusCode, self.parseApiError(with: statusCode, error: error))
+                    let statusCode = response.response?.statusCode
+                    completion(self.parseApiError(with: statusCode, error: error))
+                    
                 }
         }
+        return request
     }
     
     private func parseApiError(with statusCode: Int?, error: AFError) -> Error {
         switch statusCode {
         case 403:
-            return ApiError.forbidden
+            return APIError.forbidden
         case 404:
-            return ApiError.forbidden
+            return APIError.notFound
         case 409:
-            return ApiError.conflict
+            return APIError.conflict
         case 500:
-            return ApiError.internalServerError
+            return APIError.internalServerError
         default:
             return error
         }
+    }
+    
+}
+
+extension APIManager {
+    
+    /// cancel all request in APIManager session
+    /// - Parameter completion: Closure to be called when all `Request`s have been cancelled.
+    func cancelAllRequest(completion: (() -> Void)? = nil) {
+        self.session.cancelAllRequests(completion: completion)
     }
     
 }

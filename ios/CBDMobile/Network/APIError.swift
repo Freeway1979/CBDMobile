@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ApiError: Error {
+enum APIError: Error {
     case forbidden              // 403
     case notFound               // 404
     case conflict               // 409

@@ -10,12 +10,13 @@ import Foundation
 
 final class TestInteractor {
     func getUserRepos(with name: String, completion: @escaping (Any?) -> ()) {
-        APIManager.shared().callJSON(endpoint: TestEndpoint.readUserRepos(name: name)) { (repos: Any?, statusCode, error) in
-            guard let repos = repos else {
+        APIManager.shared().callJSON(endpoint: TestEndpoint.readUserRepos(name: name)) { result in
+            switch result {
+            case .success(let repos):
+                completion(repos)
+            case .failure(_):
                 completion(nil)
-                return
             }
-            completion(repos)
         }
     }
 }

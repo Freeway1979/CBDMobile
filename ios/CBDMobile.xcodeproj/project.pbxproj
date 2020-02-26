@@ -33,7 +33,7 @@
 		7CB0008D23FB91B30074B51F /* DeviceListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008C23FB91B30074B51F /* DeviceListManager.swift */; };
 		7CB0008F23FD055A0074B51F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0008E23FD055A0074B51F /* SecondViewController.swift */; };
 		CD7B660323FE984B00AFC425 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7B660223FE984B00AFC425 /* APIManager.swift */; };
-		CD7B660523FEBA7600AFC425 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7B660423FEBA7600AFC425 /* ApiError.swift */; };
+		CD7B660523FEBA7600AFC425 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7B660423FEBA7600AFC425 /* APIError.swift */; };
 		CD7B661423FF6A5700AFC425 /* SiteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7B661323FF6A5700AFC425 /* SiteInteractor.swift */; };
 		CD98818B23FE291400B7BB74 /* APIConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98818A23FE291400B7BB74 /* APIConvertible.swift */; };
 		CD98818D23FE29B400B7BB74 /* SiteEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98818C23FE29B400B7BB74 /* SiteEndpoint.swift */; };
@@ -42,6 +42,7 @@
 		CD98819523FE7B1C00B7BB74 /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98819423FE7B1C00B7BB74 /* TestEndpoint.swift */; };
 		CDD7C08224036B9700075544 /* Encodable+AlamofireParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7C08124036B9700075544 /* Encodable+AlamofireParameters.swift */; };
 		CDD7C0842403A1E900075544 /* TestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7C0832403A1E900075544 /* TestInteractor.swift */; };
+		CDE141E62405581D001338A5 /* APILogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE141E52405581C001338A5 /* APILogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,7 +79,7 @@
 		83837A0C2CCFF565499D995E /* Pods_CBDMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBDMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E40412F97F5FD20B2F66EAC /* Pods-CBDMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBDMobile.debug.xcconfig"; path = "Target Support Files/Pods-CBDMobile/Pods-CBDMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		CD7B660223FE984B00AFC425 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		CD7B660423FEBA7600AFC425 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		CD7B660423FEBA7600AFC425 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		CD7B661323FF6A5700AFC425 /* SiteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteInteractor.swift; sourceTree = "<group>"; };
 		CD98818A23FE291400B7BB74 /* APIConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConvertible.swift; sourceTree = "<group>"; };
 		CD98818C23FE29B400B7BB74 /* SiteEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteEndpoint.swift; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		CD98819423FE7B1C00B7BB74 /* TestEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEndpoint.swift; sourceTree = "<group>"; };
 		CDD7C08124036B9700075544 /* Encodable+AlamofireParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+AlamofireParameters.swift"; sourceTree = "<group>"; };
 		CDD7C0832403A1E900075544 /* TestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInteractor.swift; sourceTree = "<group>"; };
+		CDE141E52405581C001338A5 /* APILogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,7 +330,8 @@
 				CD98818A23FE291400B7BB74 /* APIConvertible.swift */,
 				CD98819023FE2A4400B7BB74 /* APIConstant.swift */,
 				CD7B660223FE984B00AFC425 /* APIManager.swift */,
-				CD7B660423FEBA7600AFC425 /* ApiError.swift */,
+				CD7B660423FEBA7600AFC425 /* APIError.swift */,
+				CDE141E52405581C001338A5 /* APILogger.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				7CB0008F23FD055A0074B51F /* SecondViewController.swift in Sources */,
 				2965151A23F63BB100A62E62 /* MixerReactModule.swift in Sources */,
 				06C6F3D623CDBAC700654949 /* RNViewController.swift in Sources */,
+				CDE141E62405581D001338A5 /* APILogger.swift in Sources */,
 				7C4F7B3523FE120700F68B62 /* RealmManagerConfiguration.swift in Sources */,
 				06C6F3C323CD765300654949 /* HomeViewController.swift in Sources */,
 				06C6F3BF23CD765200654949 /* AppDelegate.swift in Sources */,
@@ -463,7 +467,7 @@
 				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
 				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
 				CD98818F23FE29E200B7BB74 /* DeviceEndpoint.swift in Sources */,
-				CD7B660523FEBA7600AFC425 /* ApiError.swift in Sources */,
+				CD7B660523FEBA7600AFC425 /* APIError.swift in Sources */,
 				2965152023F6826100A62E62 /* DeviceListManagerBridge.m in Sources */,
 				067364A823FB5F330030A8B7 /* SiteDataService.swift in Sources */,
 				CDD7C08224036B9700075544 /* Encodable+AlamofireParameters.swift in Sources */,

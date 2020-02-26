@@ -11,54 +11,57 @@ import Foundation
 final class SiteInteractor {
     
     func getSites(completion: @escaping ([Site]?) -> ()) {
-        APIManager.shared().callDecodable(endpoint: SiteEndpoint.readSites) { (sites: [Site]?, statusCode, error) in
-            guard let sites = sites else {
+        APIManager.shared().callDecodable(endpoint: SiteEndpoint.readSites) { (result: Result<[Site], Error>) in
+            switch result {
+            case .success(let sites):
+                completion(sites)
+            case .failure(_):
                 completion(nil)
-                return
             }
-            completion(sites)
         }
     }
     
     func getSite(with name: String, completion: @escaping (Site?) -> ()) {
-        APIManager.shared().callDecodable(endpoint: SiteEndpoint.readSite(name: name)) { (site: Site?, statusCode, error) in
-            guard let site = site else {
+        APIManager.shared().callDecodable(endpoint: SiteEndpoint.readSite(name: name)) { (result: Result<Site, Error>) in
+            switch result {
+            case .success(let site):
+                completion(site)
+            case .failure(_):
                 completion(nil)
-                return
             }
-            completion(site)
         }
     }
-    
+
     func createSite(with site: Site, completion: @escaping (Site?) -> ()) {
         guard let parameters = site.alamofireParameters else { return }
-        APIManager.shared().callDecodable(endpoint: SiteEndpoint.createSite(parameters: parameters)) { (site: Site?, statusCode, error) in
-            guard let site = site else {
+        APIManager.shared().callDecodable(endpoint: SiteEndpoint.createSite(parameters: parameters)) { (result: Result<Site, Error>) in
+            switch result {
+            case .success(let site):
+                completion(site)
+            case .failure(_):
                 completion(nil)
-                return
             }
-            completion(site)
         }
     }
-    
+
     func updateSite(with name: String, site: Site, completion: @escaping (Site?) -> ()) {
         guard let parameters = site.alamofireParameters else { return }
-        APIManager.shared().callDecodable(endpoint: SiteEndpoint.updateSite(name: name, parameters: parameters)) { (site: Site?, statusCode, error) in
-            guard let site = site else {
+        APIManager.shared().callDecodable(endpoint: SiteEndpoint.updateSite(name: name, parameters: parameters)) { (result: Result<Site, Error>) in
+            switch result {
+            case .success(let site):
+                completion(site)
+            case .failure(_):
                 completion(nil)
-                return
             }
-            completion(site)
         }
     }
-    
-    func deleteSite(with name: String, completion: @escaping (()?) -> ()) {
-        APIManager.shared().callAction(endpoint: SiteEndpoint.deleteSite(name:  name)) { (success, statusCode, error) in
-            guard success != nil else {
-                completion(nil)
-                return
+
+    func deleteSite(with name: String, completion: @escaping (Error?) -> ()) {
+        APIManager.shared().call(endpoint: SiteEndpoint.deleteSite(name: name)) { (error) in
+            if let error = error {
+                completion(error)
             }
-            completion(success)
+            completion(nil)
         }
     }
     
