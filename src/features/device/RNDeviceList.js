@@ -10,16 +10,27 @@ export default class RNDeviceList extends React.Component {
   componentDidMount() {
     this.deviceListTag = findNodeHandle(this.refs['deviceListRef']);
   }
+  
+  constructor(props) {
+        super(props);
+        
+    }
 
   render() {
+    var deviceData;
+    if (Platform.OS == 'android') {
+           deviceData = JSON.parse(this.props.repos);
+        } else {
+            deviceData  = this.props.repos
+        }
     return (
       <View style={styles.container}>
-        {this.props.repos.length == 0 && 
+        {deviceData.length == 0 && 
           <ActivityIndicator size="large" color="#00000" />
         }
         <FlatList
           ref='deviceListRef'
-          data={this.props.repos}
+          data={deviceData}
           keyExtractor = { item => item.id.toString() }
           renderItem={({item}) => 
           <TouchableWithoutFeedback

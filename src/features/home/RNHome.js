@@ -25,12 +25,19 @@ export default class RNHome extends React.Component {
     this.textTag3 = findNodeHandle(this.refs['textTag3']);
   }
   render() {
-    var contents = this.props['members'].map((score) => (
-      <Text key={score.name}>
-        Name:{score.name} Age:{score.age}
-        {'\n'}
-      </Text>
-    ));
+    let scores;
+        if (Platform.OS == 'ios') {
+            scores = this.props['members'];
+        } else {
+            scores = JSON.parse(this.props['members']);
+        }
+        var contents = scores.map((score) => (
+            <Text key={score.name}>
+                Name:{score.name} Age:{score.age}
+                {'\n'}
+            </Text>
+        ));
+    
     return (
       <View style={styles.container}>
         <Text style={styles.highScoresTitle, {color: '#333333'}}>Welcome to React Native.</Text>
