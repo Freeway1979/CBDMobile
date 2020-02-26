@@ -88,6 +88,8 @@ class DevicesViewController: RNViewController {
             }
         }
         
+        SiteDataService.default.deleteAllSites(completion: nil)
+        
         
     }
 }
