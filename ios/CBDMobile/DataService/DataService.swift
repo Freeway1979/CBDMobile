@@ -9,65 +9,181 @@
 import Foundation
 import Realm
 import RealmSwift
+import Alamofire
 
-enum DataMode {
-    case local
-    case network
-    /// local and network
-    case localAndNetwork
-    /// local and network if local empty
-    case localOrNetwork
+enum DataServiceResult<T> {
+    case network(T)
+    case local(T)
 }
 
-struct DataOption {
-    static let defaultMode = DataMode.localAndNetwork
-    var mode = defaultMode
-    var url = ""
-    var params:[String:Any] = [:]
+/// Type of action
+enum DataServiceMode {
+    case networkOnly(APIConvertible, Parameters) // only perform on network
+    case localOnly // only perform on local
+    case localWithNetwork(APIConvertible, Parameters) // perform both local and network
 }
 
-// Should all Data as an Array?
-enum ServiceResult<T: Object> {
-    case network([T])
-    case local([T])
+// MARK: APPEND
+
+protocol DataServiceAppend {
+    associatedtype ObjectType: Object
+    func append(_ object: ObjectType, mode: DataServiceMode, completion: ((Error?) -> Void))
+    func appendRemote(_ object: ObjectType, request: APIConvertible, params: Parameters, completion: ((Error?) -> Void))
 }
 
-// Design- as a protocol or a base class?
-class DataService {
-    func getData<T: Object>(options: DataOption, completionHandler: @escaping ((Result<ServiceResult<T>, Error>) -> Void)) {
-        let mode = options.mode
-        if mode == .local || mode == .localAndNetwork {
-            retriveDataFromDB(options.params) { (result) in
+extension DataServiceAppend {
+    func appendRemote(_ object: ObjectType, request: APIConvertible, params: Parameters, completion: ((Error?) -> Void)) {
+        
+    }
+}
+
+extension DataServiceAppend {
+    func append(_ object: ObjectType, mode: DataServiceMode, completion: ((Error?) -> Void)) {
+        switch mode {
+        case .localOnly:
+            appendLocal(object, completion: completion)
+        case .networkOnly(let request, let params):
+            appendRemote(object, request: request, params: params, completion: completion)
+        case .localWithNetwork(let request, let params):
+            appendRemote(object, request: request, params: params) { error in
+                if error == nil {
+                    appendLocal(object, completion: completion)
+                } else {
+                    completion(error)
+                }
+            }
+        }
+    }
+    
+    private func appendLocal(_ object: ObjectType, completion: ((Error?) -> Void)) {
+        RealmManager.shared().addOrUpdate(object: object, condition: nil, completion: completion)
+    }
+}
+
+
+// MARK: DELETE
+
+/// Protocol for delete
+protocol DataServiceDelete {
+    associatedtype ObjectType: Object
+    
+    func delete(_ object: ObjectType, mode: DataServiceMode, completion: ((Error?) -> Void))
+    
+    func deleteRemote(_ object: ObjectType, request: APIConvertible, params: Parameters, completion: ((Error?) -> Void))
+}
+
+extension DataServiceDelete {
+    func deleteRemote(_ object: ObjectType, request: APIConvertible, params: Parameters, completion: ((Error?) -> Void)) {
+        
+    }
+}
+
+extension DataServiceDelete {
+    func delete(_ object: ObjectType, mode: DataServiceMode, completion: ((Error?) -> Void)) {
+        switch mode {
+        case .localOnly:
+            deleteLocal(object, completion: completion)
+        case .networkOnly(let request, let params):
+            deleteRemote(object, request: request, params: params, completion: completion)
+        case .localWithNetwork(let request, let params):
+            deleteRemote(object, request: request, params: params) { error in
+                if error == nil {
+                    deleteLocal(object, completion: completion)
+                } else {
+                    completion(error)
+                }
+            }
+        }
+    }
+    
+    private func deleteLocal(_ object: ObjectType, completion: ((Error?) -> Void)) {
+        RealmManager.shared().delete(object: object, completion: completion)
+    }
+}
+
+// MARK: UPDATE
+
+protocol DataServiceUpdate {
+    associatedtype ObjectType: Object
+    
+    func update(_ object: ObjectType, mode: DataServiceMode, completion: ((Error?) -> Void))
+    
+    func updateRemote(_ object: ObjectType, request: APIConvertible, params: Parameters, completion: ((Error?) -> Void))
+}
+
+extension DataServiceUpdate {
+    func updateRemote(_ object: ObjectType, request: APIConvertible, params: Parameters, completion: ((Error?) -> Void)) {
+        fatalError("updateRemote(:) has not been implemented")
+    }
+}
+
+extension DataServiceUpdate {
+    func update(_ object: ObjectType, mode: DataServiceMode, completion: ((Error?) -> Void)) {
+        switch mode {
+        case .localOnly:
+            updateLocal(object, completion: completion)
+        case .networkOnly(let request, let params):
+            updateRemote(object, request: request, params: params, completion: completion)
+        case .localWithNetwork(let request, let params):
+            updateRemote(object, request: request, params: params) { error in
+                if error == nil {
+                    updateLocal(object, completion: completion)
+                } else {
+                    completion(error)
+                }
+            }
+        }
+    }
+    
+    func updateLocal(_ object: ObjectType, completion: ((Error?) -> Void)) {
+        RealmManager.shared().addOrUpdate(object: object, condition: nil, completion: completion)
+    }
+}
+
+
+// MARK: RETRIVE
+
+protocol DataServiceRetrive {
+    associatedtype ObjectType: Object
+    func retrive(condition: String?, params: Parameters?, mode: DataServiceMode, completion: ((Result<DataServiceResult<[ObjectType]>, Error>) -> Void))
+    
+    func retriveRemote(with request: APIConvertible, params: [String: Any], completion: ((Result<DataServiceResult<[ObjectType]>, Error>) -> Void))
+}
+
+extension DataServiceRetrive {
+    func retriveRemote(with request: APIConvertible, params: Parameters, completion: ((Result<DataServiceResult<[ObjectType]>, Error>) -> Void)) {
+        
+    }
+}
+
+extension DataServiceRetrive {
+    func retrive(condition: String? = nil, params: Parameters? = nil, mode: DataServiceMode, completion: ((Result<DataServiceResult<[ObjectType]>, Error>) -> Void)) {
+        switch mode {
+        case .localOnly:
+            retriveLocal(condition: condition) { result in
                 switch result {
                 case .success(let list):
-                    completionHandler(.success(.local(list as! [T])))
+                    completion(.success(.local(list)))
                 case .failure(let error):
-                    completionHandler(.failure(error))
+                    completion(.failure(error))
                 }
             }
-        }
-        if mode == .network || mode == .localAndNetwork {
-            retriveDataFromNetwork { (data, error) in
-                if let error = error {
-                    completionHandler(.failure(error))
-                } else {
-                    // Save into local database for further usage
-                    completionHandler(.success(.network(data as! [T])))
+        case .networkOnly(let request, let params):
+            retriveRemote(with: request, params: params, completion: completion)
+        case .localWithNetwork(let request, let params):
+            retriveLocal(condition: condition) { result in
+                switch result {
+                case .success(let list):
+                    completion(.success(.local(list)))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
             }
+            retriveRemote(with: request, params: params, completion: completion)
         }
     }
     
-    /// Retrive site only from database
-    func retriveDataFromDB<T: Object>(_ params: [String:Any]? = nil, completion: @escaping ((Result<[T], Error>) -> Void))  {
-//        let condition:String = "" // Build condition from params
-//        RealmManager.shared().retrive(T.self, condition: condition) { (result) in
-//            completion(result)
-//        }
-    }
-    
-    /// Retrive site only from netwrok
-    func retriveDataFromNetwork<T:Object>(completionHandler: ( ([T], Error?) -> Void)) {
-        // TODO api request
+    private func retriveLocal(condition: String?, completion: ((Result<[ObjectType], Error>) -> Void)) {
+        RealmManager.shared().retrive(ObjectType.self, condition: condition, completion: completion)
     }
 }
