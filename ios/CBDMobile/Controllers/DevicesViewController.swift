@@ -72,23 +72,39 @@ class DevicesViewController: RNViewController {
         site2.country = "USA"
         site2.name = "second"
         
-        SiteDataService.default.appendSitesIntoDB([site1, site2], completion: nil)
-        
-        SiteDataService.default.getSiteList { result in
-            switch result {
-            case .success(let dataResult):
-                switch dataResult {
-                case .network(let sites):
-                    print("Site list from network: \(sites)")
-                case .local(let sites):
-                    print("Site list from network: \(sites)")
-                }
-            case .failure(_):
-                print("Error when fetch data in realm.")
+        SiteDataService.default.append(site1, mode: .localOnly) { error in
+            if error == nil {
+                print("DataService: Site stored success")
             }
         }
         
-        SiteDataService.default.deleteAllSites(completion: nil)
+        SiteDataService.default.retrive(mode: .localOnly) { result in
+            switch result {
+            case .success(.local(let list)):
+                print("DataService: \(list)")
+            default:
+                break
+            }
+        }
+        
+        
+//        SiteDataService.default.appendSitesIntoDB([site1, site2], completion: nil)
+//
+//        SiteDataService.default.getSiteList { result in
+//            switch result {
+//            case .success(let dataResult):
+//                switch dataResult {
+//                case .network(let sites):
+//                    print("Site list from network: \(sites)")
+//                case .local(let sites):
+//                    print("Site list from network: \(sites)")
+//                }
+//            case .failure(_):
+//                print("Error when fetch data in realm.")
+//            }
+//        }
+//
+//        SiteDataService.default.deleteAllSites(completion: nil)
         
         
     }

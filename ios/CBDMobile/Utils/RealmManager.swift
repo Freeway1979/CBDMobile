@@ -154,7 +154,7 @@ extension RealmManager {
 
 // MARK: Object
 extension RealmManager {
-    func addOrUpdate<T: Object>(_condition: String?, object: T, completion: ((Error?) -> Void)) {
+    func addOrUpdate<T: Object>(object: T, condition: String?, completion: ((Error?) -> Void)) {
         guard let realm = realm else {
             completion(RealmManagerError.realmOpeningFailed)
             return
